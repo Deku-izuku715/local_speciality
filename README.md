@@ -12,6 +12,7 @@
 ## itemsテーブル
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
+| title  | string     | null : false                   |
 | text   | string     | null : false                   |
 | user   | references | null: false, foreign_key: true |
 - belongs_to :user
