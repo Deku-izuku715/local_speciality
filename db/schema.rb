@@ -40,6 +40,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_10_114602) do
   end
 
   create_table "items", charset: "utf8", force: :cascade do |t|
+    t.string "prefecture", null: false
     t.string "title", null: false
     t.string "text", null: false
     t.bigint "user_id", null: false

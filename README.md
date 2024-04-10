@@ -12,9 +12,10 @@
 ## itemsテーブル
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-| title  | string     | null : false                   |
-| text   | string     | null : false                   |
-| user   | references | null: false, foreign_key: true |
+| prefecture | string     | null : false                   |
+| title      | string     | null : false                   |
+| text       | string     | null : false                   |
+| user       | references | null: false, foreign_key: true |
 - belongs_to :user
 - has_many :comments
 - has_many :favorites
