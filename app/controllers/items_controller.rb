@@ -1,16 +1,21 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.all
+    @items = Item.includes(:user)
   end
   def new
     @item = Item.new
   end
   def create
-    if Item.create(item_params)
+    @item = Item.new(item_params)
+    if @item.save
       redirect_to '/'
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def show
+    @item = Item.find(params[:id])
   end
 
   private
