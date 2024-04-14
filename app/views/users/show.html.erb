@@ -16,7 +16,6 @@
         <%= "#{@user.nickname}さんのおすすめの名産品"%>
       </h2>
       <div class="user__card">
-        <%# 部分テンプレートでそのユーザーが投稿したプロトタイプ投稿一覧を表示する %>
         <%= render partial: 'items/item', collection: @items %>
       </div>
     </div>
