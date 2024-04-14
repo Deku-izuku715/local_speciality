@@ -21,11 +21,11 @@
 - has_many :favorites
 
 ## commentsテーブル
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| text   | string     | null : false                   |
-| user   | references | null: false, foreign_key: true |
-| item   | references | null: false, foreign_key: true |
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| content | text       | null : false                   |
+| user    | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
 - belongs_to :user
 - belongs_to :item
 

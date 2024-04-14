@@ -3,8 +3,8 @@
   <div class="card__body">
     <%= link_to item.title, item_path(item.id), class: :card__title%>
     <p class="card__summary">
-      <%= item.text %>
+      <%= item.introduce %>
     </p>
-    <%= link_to "by #{item.user.nickname}", root_path, class: :card__user %>
+    <%= link_to "by #{item.user.nickname}", user_path(item.user), class: :card__user %>
   </div>
 </div>
