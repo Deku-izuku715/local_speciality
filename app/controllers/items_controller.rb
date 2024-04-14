@@ -1,10 +1,14 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @items = Item.includes(:user)
   end
+
   def new
     @item = Item.new
   end
+  
   def create
     @item = Item.new(item_params)
     if @item.save
@@ -16,10 +20,15 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
   end
 
   def edit
     @item = Item.find(params[:id])
+    unless @item.user_id == current_user.id
+      redirect_to action: :index
+    end
   end
 
   def update
@@ -39,6 +48,6 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:prefecture, :title, :text, :image).merge(user_id: current_user.id)
+    params.require(:item).permit(:prefecture, :title, :introduce, :image).merge(user_id: current_user.id)
   end
 end
