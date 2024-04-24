@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   resources :items do
     resources :comments, only: :create
   end
-  resources :users, only: :show
+  resources :users, only: :show do
+    resource :follows, only: [:create, :destroy]
+  end
 end
