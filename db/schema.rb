@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_24_070129) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_02_070033) do
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -50,12 +50,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_24_070129) do
   end
 
   create_table "favorites", charset: "utf8", force: :cascade do |t|
-    t.bigint "following_id"
-    t.bigint "follower_id"
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["follower_id"], name: "index_favorites_on_follower_id"
-    t.index ["following_id"], name: "index_favorites_on_following_id"
+    t.index ["item_id"], name: "index_favorites_on_item_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "follows", charset: "utf8", force: :cascade do |t|
@@ -94,5 +94,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_24_070129) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "items"
   add_foreign_key "comments", "users"
+  add_foreign_key "favorites", "items"
+  add_foreign_key "favorites", "users"
   add_foreign_key "items", "users"
 end
