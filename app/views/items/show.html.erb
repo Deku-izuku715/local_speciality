@@ -48,6 +48,13 @@
             </li>
           <% end %>
         </ul>
+        <div id="favorite-btn<%= @item.id %>">
+        <% if user_signed_in? && @item.favorited_by?(current_user)%>
+          <%=link_to "いいね済", item_favorites_path(@item.id), data: { turbo_method: :delete }, class: "item_favorites" %>
+        <% else %>
+          <%=link_to "いいねする", item_favorites_path(@item.id), data: { turbo_method: :post }, class: "item_favorites" %>
+        <% end %>
+        </div>
       </div>
     </div>
   </div>
